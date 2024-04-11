@@ -3,11 +3,29 @@
     {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <script src="{% static 'app.js' %}"></script>
     <title>Vinci2Learn</title>
   </head>
-  <body>
-    <button onclick="goToLogin()">Connection</button>
+  <body onload="xp_max({{user.level}})" class="body_mid">
+    <nav>
+      <div class="navigation_left">
+        <h1>Vinci2Learn</h1>
+      </div>
+      <div class="navigation_right">
+        {% if user.is_authenticated%}
+        <div class="xp_div">
+          <div>
+            <p>Level: {{user.level}}</p>
+            <p>Xp: {{user.xp}}/<span id="xp_max"></span></p>
+          </div>
+          <a class="username">{{user.username}}</a>
+        </div>
+        {% else %}
+        <button onclick="goToLogin()">Connection</button>
+        {% endif %}
+      </div>
+    </nav>
     {% if user.is_authenticated%}
     <h1>Bonjour {{user.username}}, bienvenue sur Vinci2Learn</h1>
     <h2>Cliquer sur le bouton pour acceder au cours</h2>

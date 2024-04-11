@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from .forms import CreateUser
 
 # Create your views here.
 
@@ -25,13 +25,13 @@ def login_index(request):
 def register_index(request):
 
   if request.method == 'POST':
-    form = UserCreationForm(request.POST)
+    form = CreateUser(request.POST)
 
-    if form.is_valid:
+    if form.is_valid():
       form.save()
       return redirect("lessons")
   else:
-    form = UserCreationForm()
+    form = CreateUser()
 
   return render(request, "auth_register_index.html", context={"form": form})
 

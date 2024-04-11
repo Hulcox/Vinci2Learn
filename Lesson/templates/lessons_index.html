@@ -3,21 +3,57 @@
     {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <script src="{% static 'app.js' %}"></script>
     <title>Vinci2Learn</title>
   </head>
-  <body>
-    <h1>liste de tous les cours :</h1>
-    <h1>{{user.is_authenticated}}</h1>
-    <ul>
+  <body onload="xp_max({{user.level}})">
+    <nav>
+      <div class="navigation_left">
+        <h1>Vinci2Learn</h1>
+      </div>
+      <div class="navigation_right">
+        {% if user.is_authenticated%}
+        <div class="xp_div">
+          <div>
+            <p>Level: {{user.level}}</p>
+            <p>Xp: {{user.xp}}/<span id="xp_max"></span></p>
+          </div>
+          <div>
+            <a class="username">{{user.username}}</a>
+            <div>
+            <a href={% url 'statistic'%}>Statistique</a>
+            <span>/</span>
+            {% if user.is_superuser %}
+            <a>administation</a>
+            <span>/</span>
+            {% endif %}
+            <a href={% url 'logout'%}>Deconnexion</a>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <button onclick="goToLogin()">Connection</button>
+        {% endif %}
+      </div>
+    </nav>
+    <h1>Liste de tous les cours :</h1>
+    <div class="box_lessons">
       {% for lesson in lessons %}
-      <div>
-        <h4>{{lesson.title}}</h4>
-        <p>{{lesson.description}}</p>
-        <p>{{lesson.author}}</p>
-        <button onclick="goToLesson({{lesson.id}})">participé au cours</button>
+      <div class="box_lesson">
+        <div class="lesson_detail">
+          <h3>{{lesson.id}} - {{lesson.title}}</h3>
+          <p>{{lesson.description}}</p>
+          <p>Crée par: {{lesson.author}}</p>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <button onclick="goToLesson({{lesson.id}})">
+            participé au cours
+          </button>
+        </div>
       </div>
       {% endfor %}
-    </ul>
+    </div>
   </body>
 </html>

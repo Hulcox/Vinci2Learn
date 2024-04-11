@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     {% load static %}
@@ -8,12 +7,6 @@
     <title>Vinci2Learn</title>
   </head>
   <body>
-    <h1>Inscription</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{form.as_p}}
-      <button type="submit">S'inscrire</button>
-    </form>
-    <a href={% url 'login' %}>Vous avez déjà un compte ?</a>
+    <h1>{{error}}</h1>
   </body>
 </html>

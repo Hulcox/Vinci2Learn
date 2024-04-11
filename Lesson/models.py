@@ -20,9 +20,18 @@ class Lesson(models.Model):
   created_at = models.DateTimeField(default=now)
   updated_at = models.DateTimeField(default=now)
 
+  def __str__(self):
+        return self.title
+
 class Chapiter(models.Model):
   title = models.CharField(default="Titre du chapitre", max_length=100)
   content = models.TextField(default="Contenue du chapitre", max_length=3000)
   lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
   created_at = models.DateTimeField(default=now)
   updated_at = models.DateTimeField(default=now)
+
+  def __str__(self):
+        return self.title
+
+
+  

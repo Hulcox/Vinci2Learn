@@ -3,13 +3,21 @@
     {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <script src="{% static 'app.js' %}"></script>
     <title>Vinci2Learn</title>
   </head>
-  <body>
+  <body
+    class="body_mid"
+    onload="reward({{user.xp}}, {{lesson.xp_reward}}, {{user.level}})"
+  >
     <h1>Félicitation, {{user.username}}</h1>
     <h3>Tu viens de finir le cours : <span>{{lesson.title}}</span></h3>
-    <h4>tu viens de gagner 15 xp !!!</h4>
+    {% if not lessonCompleted %}
+    <h4>tu viens de gagner {{lesson.xp_reward}} xp !</h4>
+    <h4 id="xp_reward"></h4>
+    <h4 id="level_reward"></h4>
+    {% endif %}
     <button onclick="goToLessons()">Retourner a la liste des cours</button>
   </body>
 </html>

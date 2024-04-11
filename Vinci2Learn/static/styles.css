@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #242423;
+  color: #E8EDDF;
+  text-align: center;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+nav {
+  height: 4rem;
+  width: 100vw;
+  background-color: #333533;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation_right{
+  margin-right: 1rem;
+}
+
+.navigation_left{
+  margin-left: 1rem;
+}
+
+.xp_div{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+button {
+  background-color: #F5CB5C;
+  border: none;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+h2 {
+  font-style: italic;
+}
+
+.box_lesson {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+
+.box_lessons {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.divider{
+  width: 0px;
+  height: 100px;
+  border: #CFDBD5 solid 2px;
+}
+
+.box_lesson > div {
+  text-align: left;
+}
+
+.lesson_detail {
+  width: 60%;
+}
+
+.endLesson {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+a {
+  text-decoration: underline;
+  color: #CFDBD5
+}
+
+.back {
+  position: absolute;
+  top: 5rem;
+  left: 15px;
+}
+
+.body_mid{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+}
+
+.lessonCompleted{
+  color: #59c91c
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 10%;
+  padding: 12px 18px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  border: 3px solid #555;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.container > div {
+  width: 35vw;
+  height: 80vh;
+  background-color: #E8EDDF;
+  border-radius: 15px;
+  color: #242423;
+}
+
+li {
+  text-align: left;
+}
+

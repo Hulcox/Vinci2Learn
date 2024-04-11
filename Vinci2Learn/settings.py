@@ -17,7 +17,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIRR = Path(__file__).resolve().parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -40,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Auth',
-    'Lesson'
+    'Lesson',
+    'Statistic'
 ]
+
+AUTH_USER_MODEL = 'Auth.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
