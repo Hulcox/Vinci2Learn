@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="{% static 'app.js' %}"></script>
+    <title>Vinci2Learn</title>
+  </head>
+  <body>
+    <button onclick="goToLogin()">Connection</button>
+    {% if user.is_authenticated%}
+    <h1>Bonjour {{user.username}}, bienvenue sur Vinci2Learn</h1>
+    <h2>Cliquer sur le bouton pour acceder au cours</h2>
+    <button onclick="goToLessons()">Acceder au cours en ligne</button>
+    {% else %}
+    <h1>Bienvenue sur Vinci2Learn</h1>
+    <h2>Connecter vous pour acceder au cours</h2>
+    <button onclick="goToLogin()">Acceder au cours en ligne</button>
+    {% endif %}
+  </body>
+</html>

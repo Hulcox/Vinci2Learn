@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="{% static 'app.js' %}"></script>
+    <title>Vinci2Learn</title>
+  </head>
+  <body>
+    <a href={% url 'lessons' %}>Retour</a>
+    <h1>{{lesson.title}}</h1>
+    <div>
+      {% for chapiter in chapiters %}
+      <div>
+        <h4>{{chapiter.title}}</h4>
+        <p>{{chapiter.content}}</p>
+      </div>
+      {% endfor %}
+      <button onclick="getReward({{lesson.id}})">Fnir le cours</button>
+    </div>
+  </body>
+</html>

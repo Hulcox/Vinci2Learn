@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="{% static 'app.js' %}"></script>
+    <title>Vinci2Learn</title>
+  </head>
+  <body>
+    <h1>liste de tous les cours :</h1>
+    <h1>{{user.is_authenticated}}</h1>
+    <ul>
+      {% for lesson in lessons %}
+      <div>
+        <h4>{{lesson.title}}</h4>
+        <p>{{lesson.description}}</p>
+        <p>{{lesson.author}}</p>
+        <button onclick="goToLesson({{lesson.id}})">participé au cours</button>
+      </div>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

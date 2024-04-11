@@ -1,0 +1,15 @@
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="{% static 'app.js' %}"></script>
+    <title>Vinci2Learn</title>
+  </head>
+  <body>
+    <h1>Félicitation, {{user.username}}</h1>
+    <h3>Tu viens de finir le cours : <span>{{lesson.title}}</span></h3>
+    <h4>tu viens de gagner 15 xp !!!</h4>
+    <button onclick="goToLessons()">Retourner a la liste des cours</button>
+  </body>
+</html>
