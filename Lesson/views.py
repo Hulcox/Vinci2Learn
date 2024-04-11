@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from .forms import *
 # Create your views here.
 def lessons_index(request):
   if not request.user.is_authenticated:
@@ -29,8 +30,6 @@ def lesson_reward(request, lessonID):
     lesson = get_object_or_404(pk=lessonID, klass=Lesson)
     lesson_completed_cookie = 'lesson_completed_{}'.format(lessonID)
 
-    print(request.COOKIES.get(lesson_completed_cookie))
-
     # Vérifiez si le cookie de la leçon complétée est déjà présent
     if not request.COOKIES.get(lesson_completed_cookie):
         request.user.xp += lesson.xp_reward
@@ -48,3 +47,30 @@ def lesson_reward(request, lessonID):
     else:
         # La leçon a déjà été complétée, redirigez simplement vers la page de récompense
         return render(request, "lesson_reward.html", context={'lesson': lesson,"lessonCompleted": True, "userLevelUp": False, })
+    
+
+def createLesson(request):
+  if not request.user.is_authenticated:
+    return redirect("home")
+  
+  if request.method == 'POST':
+      form = LessonForm(request.POST)
+      if form.is_valid():
+          form.save()
+          return redirect('create_lesson')
+  else:
+      form = LessonForm()
+      return render(request, 'create_lesson.html', {'form': form})
+   
+def createChapiter(request):
+    if not request.user.is_authenticated:
+      return redirect("home")
+
+    if request.method == 'POST':
+        form = ChapiterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('create_chapiter')
+    else:
+        form = ChapiterForm()
+        return render(request, 'create_chapiter.html', {'form': form})

@@ -25,7 +25,7 @@
             <a href={% url 'statistic'%}>Statistique</a>
             <span>/</span>
             {% if user.is_superuser %}
-            <a>administation</a>
+            <a href={% url 'create_lesson' %}>administation</a>
             <span>/</span>
             {% endif %}
             <a href={% url 'logout'%}>Deconnexion</a>

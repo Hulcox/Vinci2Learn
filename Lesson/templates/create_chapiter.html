@@ -25,7 +25,7 @@
             <a href={% url 'statistic'%}>Statistique</a>
             <span>/</span>
             {% if user.is_superuser %}
-            <a href={% url 'create_lesson' %}>administation</a>
+            <a>administation</a>
             <span>/</span>
             {% endif %}
             <a href={% url 'logout'%}>Deconnexion</a>
@@ -38,24 +38,13 @@
       </div>
     </nav>
     <a href={% url 'lessons' %} class="back"> > Retour</a>
-    <h1>Classement et Statistique</h1>
-    <div class="container">
-      <div class="box1">
-        <h2>Dernière connexion: </h2>
-        <ul>
-        {% for last_connection in last_connections %}
-          <li>{{last_connection.username}} - {{ last_connection.last_login|date:"Y-m-d" }} {{ last_connection.last_login|time:"H:i:s" }}</li>
-        {% endfor %}
-        </ul>
-      </div>
-      <div class="box2">
-        <h2>Utilisateurs +xp: </h2>
-        <ul>
-          {% for xp_stat in xp_stats %}
-            <li>{{xp_stat.username}} - {{xp_stat.xp}} xp</li>
-          {% endfor %}
-        </ul>
-      </div>
+    <h1>Creer un chapitre</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+    <a href={% url 'create_lesson' %}> > Creer un cours</a>
     </div>
   </body>
 </html>
